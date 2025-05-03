@@ -16,13 +16,11 @@ public class UtilExcel {
         XSSFWorkbook book  = new XSSFWorkbook(file);
         XSSFSheet sheet = book.getSheet(sheetName);
 
-        System.out.println("R ->" + sheet.getLastRowNum());
-        System.out.println("C ->" + sheet.getRow(0).getLastCellNum());
-        Object[][] data = new Object[sheet.getLastRowNum()][sheet.getRow(0).getLastCellNum()];
+        Object[][] data  = new Object[sheet.getLastRowNum()][sheet.getRow(0).getLastCellNum()];
+        for(int i=0;i<sheet.getLastRowNum();i++){
+            for(int j=0;j<sheet.getRow(0).getLastCellNum();j++){
+                data[i][j]=sheet.getRow(i+0).getCell(j).toString();
 
-        for(int i=0;i< sheet.getLastRowNum();i++){
-            for (int j=0;j< sheet.getRow(0).getLastCellNum();j++){
-                data[i][j] = sheet.getRow(i+1).getCell(j).toString();
             }
         }
         return data;
